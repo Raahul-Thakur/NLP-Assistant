@@ -8,9 +8,9 @@ A lightweight NLP-powered assistant that provides **summarization**, **news clas
 
 - 📄 **Summarization** (with sliding window + meta-summary)
 - 🗞️ **News Classification** using `DistilBERT`
-- 📌 **Event Detection** with `KeyBERT`
+- 📌 **Event Detection** with `KeyBERT`, `spaCy` & `TF-IDF`
 - 📥 Upload **PDFs**
-- 🔗 Input article **URLs** *(planned for next update)*
+- 🔗 Input article **URLs** using `newspaper3k`
 
 ---
 
@@ -22,6 +22,8 @@ A lightweight NLP-powered assistant that provides **summarization**, **news clas
 - `pdfplumber` for PDF extraction
 - `PyTorch` (auto GPU/CPU)
 - `scikit-learn` & `sentence-transformers` for KeyBERT
+- `newspaper3k` for url support
+- `spacy` & `TfidfVectorizer` for Extracting NER
 
 ---
 
@@ -37,8 +39,8 @@ nlp_assistant/ ├── app.py # Main Streamlit app ├── requirements.txt 
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/Raahul-Thakur/nlp-assistant.git
-cd nlp-assistant
+git clone https://github.com/Raahul-Thakur/NLP-Assistant.git
+cd NLP-ASSISTANT
 ```
 
 ### 2. Requirements
@@ -53,7 +55,7 @@ streamlit run app.py
 Models Used
 Task	            Model
 Summarization	pszemraj/led-large-book-summary (Long LED Transformer)
-Classification	Yueh-Huan/news-category-classification-distilbert
+Classification	
 Event Detection	     KeyBERT with sentence-transformers
 
 ---
@@ -62,6 +64,8 @@ Let me know if you’d like to:
 
 - Add badges (stars, forks, license)
 - Include a demo GIF/screenshot
-- Change the contact link or name
-
-Want me to add this `README.md` directly to your folder via the canvas?
+- contact
+  
+LinkedIn: https://www.linkedin.com/in/rahul-t-171458190/
+Instagram: https://www.instagram.com/rah.ipynb
+Gmail: raahul.thakurr01@gmail.com
