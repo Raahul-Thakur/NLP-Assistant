@@ -1,0 +1,11 @@
+# Ignore virtual environment
+myenv/
+
+# Ignore assets folder (optional, if not needed in deployment)
+assets/
+
+# Ignore Python cache
+modules/__pycache__/
+__pycache__/
+*.py[cod]
+*.pyo
