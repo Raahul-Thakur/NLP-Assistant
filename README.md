@@ -69,3 +69,8 @@ Let me know if you’d like to:
 LinkedIn: https://www.linkedin.com/in/rahul-t-171458190/
 Instagram: https://www.instagram.com/rah.ipynb
 Gmail: raahul.thakurr01@gmail.com
+
+---
+
+## Deployment
+https://nlp-assistant.streamlit.app/
