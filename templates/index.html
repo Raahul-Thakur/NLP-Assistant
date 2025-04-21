@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NLP Assistant</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <h1>NLP Assistant</h1>
+
+  <div class="section">
+    <h2>Summarization</h2>
+    <form action="/summarize" method="POST" enctype="multipart/form-data">
+      <textarea name="text_input" placeholder="Paste article text..."></textarea><br>
+      <input type="file" name="pdf_input"><br>
+      <input type="text" name="url_input" placeholder="Paste article URL..."><br>
+      <button type="submit">Summarize</button>
+    </form>
+    {% if summary %}
+      <h3>Summary:</h3>
+      <textarea readonly>{{ summary }}</textarea>
+    {% endif %}
+  </div>
+
+  <div class="section">
+    <h2>Classification</h2>
+    <form action="/classify" method="POST">
+      <textarea name="classify_input" placeholder="Enter news content..."></textarea><br>
+      <button type="submit">Classify</button>
+    </form>
+    {% if classification %}
+      <h3>Category:</h3>
+      <p>{{ classification }}</p>
+    {% endif %}
+  </div>
+
+  <div class="section">
+    <h2>Event Detection</h2>
+    <form action="/events" method="POST">
+      <textarea name="event_input" placeholder="Enter article or paragraph..."></textarea><br>
+      <button type="submit">Detect Events</button>
+    </form>
+    {% if events %}
+      <h3>Detected Events:</h3>
+      <p>{{ events }}</p>
+    {% endif %}
+  </div>
+</body>
+</html>

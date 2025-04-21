@@ -1,11 +1,7 @@
 services:
   - type: web
-    name: nlp-assistant
+    name: nlp-assistant-flask
     env: python
-    plan: starter
-    region: oregon
     buildCommand: pip install -r requirements.txt
     startCommand: ./start.sh
-    envVars:
-      - key: PYTHON_VERSION
-        value: 3.10
+    plan: free
