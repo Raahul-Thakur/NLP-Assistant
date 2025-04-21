@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Optional: install missing spaCy model manually (if not auto-installed)
-python -m spacy download en_core_web_md
+# Ensure the PORT Render expects is used
+export PORT=${PORT:-8501}
 
-# Start Streamlit app
+# Run Streamlit binding to the correct host and port
 streamlit run app.py --server.port=$PORT --server.address=0.0.0.0
