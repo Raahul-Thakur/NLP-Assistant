@@ -1,41 +1,53 @@
 # app.py
-from flask import Flask, request, render_template
+
+import gradio as gr
 from modules.summarizer import summarize_text
 from modules.classifier import classify_text
 from modules.event_detector import detect_events
-from modules.utils import read_pdf, fetch_article_from_url
 
-app = Flask(__name__)
+# Main function that processes input
+def process_text(input_text):
+    summary = summarize_text(input_text)
+    classification = classify_text(input_text)
+    events = detect_events(input_text)
+    
+    # Display events in a comma-separated format
+    events_formatted = ', '.join(events) if isinstance(events, list) else events
+    return summary, classification, events_formatted
 
-@app.route('/')
-def home():
-    return render_template("index.html")
+# Create the Gradio UI
+with gr.Blocks() as demo:
+    gr.Markdown(
+        """
+        # 🧠 NLP Assistant
+        Enter your text below and get:
+        - 📚 **Summarization**
+        - 🏷️ **Text Classification**
+        - 🗂️ **Event Detection**
+        """
+    )
 
-@app.route('/summarize', methods=['POST'])
-def summarize():
-    content = ""
-    if 'url_input' in request.form and request.form['url_input'].strip():
-        content = fetch_article_from_url(request.form['url_input'])
-    elif 'pdf_input' in request.files and request.files['pdf_input'].filename:
-        pdf_file = request.files['pdf_input']
-        content = read_pdf(pdf_file)
-    else:
-        content = request.form.get('text_input', '')
+    with gr.Row():
+        input_text = gr.Textbox(
+            label="Input Text",
+            placeholder="Paste your article, document, or paragraph here...",
+            lines=10
+        )
 
-    summary = summarize_text(content)
-    return render_template("index.html", summary=summary)
+    with gr.Row():
+        submit_btn = gr.Button("Process")
 
-@app.route('/classify', methods=['POST'])
-def classify():
-    text = request.form.get('classify_input', '')
-    classification = classify_text(text)
-    return render_template("index.html", classification=classification)
+    with gr.Row():
+        summary_output = gr.Textbox(label="Summary", lines=5)
+        classification_output = gr.Textbox(label="Classification", lines=2)
+        events_output = gr.Textbox(label="Detected Events", lines=5)
 
-@app.route('/events', methods=['POST'])
-def events():
-    text = request.form.get('event_input', '')
-    events = detect_events(text)
-    return render_template("index.html", events=events)
+    submit_btn.click(
+        fn=process_text,
+        inputs=[input_text],
+        outputs=[summary_output, classification_output, events_output]
+    )
 
-if __name__ == '__main__':
-    app.run(debug=True, port=10000, host='0.0.0.0')
+# Launch Gradio app
+if __name__ == "__main__":
+    demo.launch()
