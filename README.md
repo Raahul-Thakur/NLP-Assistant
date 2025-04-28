@@ -1,3 +1,14 @@
+---
+title: "NLP-Assistant"
+emoji: "🧠"
+colorFrom: "blue"
+colorTo: "purple"
+sdk: "gradio"
+sdk_version: "4.16.0"
+app_file: "app.py"
+license: "mit"
+---
+
 # 🤖 NLP Assistant
 
 A lightweight NLP-powered assistant that provides **summarization**, **news classification**, and **event detection** from text, PDF uploads, or article URLs. Built using `Transformers`, `KeyBERT`, `Streamlit`, and `pdfplumber`.
