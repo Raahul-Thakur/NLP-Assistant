@@ -1,13 +1,17 @@
+
 ---
-title: "NLP-Assistant"
-emoji: "🧠"
-colorFrom: "blue"
-colorTo: "purple"
-sdk: "gradio"
-sdk_version: "4.16.0"
-app_file: "app.py"
-license: "mit"
+title: NLP Assistant
+emoji: 🧠
+colorFrom: blue
+colorTo: indigo
+sdk: gradio
+sdk_version: 5.27.0
+app_file: app.py
+python_version: 3.11
+hardware: cpu-basic
+pinned: false
 ---
+
 
 # 🤖 NLP Assistant
 
